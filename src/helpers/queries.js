@@ -7,24 +7,12 @@ const apiNames = ['accounts', 'assets', 'customers', 'datapoints', 'devices', 'd
 export const useFetchAllApiStatuses = () => useQueries(
   apiNames.map(apiName => ({
     queryKey: ['apiStatus', apiName],
-    queryFn: () => axios.get(getApiUrl(apiName), { validateStatus: () => true })
-      .then(response => {
-        if (response.status >= 200 && response.status < 300) {
-          // Success case
-          return {
-            ...response.data,
-            success: true,
-            title: apiName
-          };
-        } else {
-          // Error case (including 4XX and 5XX HTTP status codes)
-          return {
-            success: false,
-            error: `${response.status} ${response.statusText}`,
-            title: apiName,
-          };
-        }
-      })
+    queryFn: () => axios.get(getApiUrl(apiName))
+      .then(response => ({
+        ...response.data,
+        success: true,
+        title: apiName
+      }))
       .catch(error => {
         let errorMessage = 'Error';
         if (error.response) {

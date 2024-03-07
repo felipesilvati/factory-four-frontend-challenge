@@ -29,7 +29,6 @@ const App = () => {
   return (
     <div style={{ padding: 16 }}>
       <Title>Status Dashboard</Title>
-
       <div style={listStyle}>
         {results}
       </div>
