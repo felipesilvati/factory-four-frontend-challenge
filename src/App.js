@@ -1,9 +1,14 @@
-import { Typography } from 'antd';
+import { Typography, Card } from 'antd';
+import StatusCard from './components/StatusCard';
 const { Title } = Typography;
 
-function App() {
+const App = () => {
   return (
-    <Title>Status Dashboard</Title>
+    <>
+      <Title>Status Dashboard</Title>
+
+      <StatusCard title='Accounts' />
+    </>
   );
 }
 
