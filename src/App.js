@@ -1,20 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Typography, Spin, Slider } from 'antd';
-import StatusCard from './components/StatusCard';
 import { useFetchAllApiStatuses } from './helpers/queries';
-import { DEFAULT_RETRY_DELAY_MILLISECONDS, MAX_REFRESH_INTERVAL_SECONDS, MIN_REFRESH_INTERVAL, MIN_REFRESH_INTERVAL_SECONDS } from './helpers/constants';
+import {
+  DEFAULT_REFETCH_INTERVAL_MILLISECONDS,
+  MAX_REFRESH_INTERVAL_SECONDS,
+  MIN_REFRESH_INTERVAL_SECONDS
+} from './helpers/constants';
 import { useQueryClient } from 'react-query';
+import { StatusCardList } from './components/StatusCardList';
 const { Title, Text } = Typography;
 
-const listStyle = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '16px',
-  justifyContent: 'left',
-};
-
 const App = () => {
-  const [refetchInterval, setRefetchInterval] = useState(DEFAULT_RETRY_DELAY_MILLISECONDS);
+  const [refetchInterval, setRefetchInterval] = useState(DEFAULT_REFETCH_INTERVAL_MILLISECONDS);
   const queryResults = useFetchAllApiStatuses(refetchInterval)
   const [initialLoad, setInitialLoad] = useState(true);
   const queryClient = useQueryClient();
@@ -30,13 +27,6 @@ const App = () => {
   if (initialLoad) {
     return <Spin />
   }
-
-  const results = queryResults
-    .map(query => {
-      const { title, success, hostname, time, error } = query.data || {}
-
-      return <StatusCard key={title} title={title} success={success} hostname={hostname} time={time} error={error} />
-    })
 
   return (
     <div style={{ paddingLeft: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -54,9 +44,7 @@ const App = () => {
         />
       </div>
 
-      <div style={listStyle}>
-        {results}
-      </div>
+      <StatusCardList statusCards={queryResults} />
     </div>
   );
 }
