@@ -10,6 +10,13 @@ import { useQueryClient } from 'react-query';
 import { StatusCardList } from './components/StatusCardList';
 const { Title, Text } = Typography;
 
+const mainDivStyle = {
+  paddingLeft: 16,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 16
+};
+
 const App = () => {
   const [refetchInterval, setRefetchInterval] = useState(DEFAULT_REFETCH_INTERVAL_MILLISECONDS);
   const queryResults = useFetchAllApiStatuses(refetchInterval)
@@ -30,11 +37,12 @@ const App = () => {
   }
 
   return (
-    <div style={{ paddingLeft: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div style={mainDivStyle}>
       <Title>Status Dashboard</Title>
 
       <div style={{ width: 400 }}>
-        <Text>Refresh Interval{isFetching ? ' (refreshing...)' : null}</Text>
+        <Text>Refresh Interval</Text>
+        {isFetching ? <Spin style={{ marginLeft: 10 }} size='small' /> : null}
         <Slider
           min={MIN_REFRESH_INTERVAL_SECONDS}
           max={MAX_REFRESH_INTERVAL_SECONDS}
