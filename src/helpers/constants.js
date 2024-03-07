@@ -1,0 +1,1 @@
+export const DEFAULT_RETRY_DELAY = 15000;

@@ -1,8 +1,10 @@
-import { Typography, Spin } from 'antd';
+import { useState, useEffect } from 'react';
+import { Typography, Spin, Slider } from 'antd';
 import StatusCard from './components/StatusCard';
 import { useFetchAllApiStatuses } from './helpers/queries';
-import { useIsFetching } from 'react-query';
-const { Title } = Typography;
+import { DEFAULT_RETRY_DELAY } from './helpers/constants';
+import { useQueryClient } from 'react-query';
+const { Title, Text } = Typography;
 
 const listStyle = {
   display: 'flex',
@@ -12,10 +14,20 @@ const listStyle = {
 };
 
 const App = () => {
-  const queryResults = useFetchAllApiStatuses()
-  const isFetching = useIsFetching()
+  const [refetchInterval, setRefetchInterval] = useState(DEFAULT_RETRY_DELAY);
+  const queryResults = useFetchAllApiStatuses(refetchInterval)
+  const [initialLoad, setInitialLoad] = useState(true);
+  const queryClient = useQueryClient();
 
-  if (isFetching) {
+  // Only show loading spinner on initial load
+  useEffect(() => {
+    const allLoaded = queryResults.every(query => query.isLoading === false);
+    if (allLoaded) {
+      setInitialLoad(false);
+    }
+  }, [queryResults]);
+
+  if (initialLoad) {
     return <Spin />
   }
 
@@ -27,8 +39,21 @@ const App = () => {
     })
 
   return (
-    <div style={{ paddingLeft: 16 }}>
+    <div style={{ paddingLeft: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
       <Title>Status Dashboard</Title>
+
+      <div style={{ width: 400 }}>
+        <Text>Refetch Interval</Text>
+        <Slider
+          min={5}
+          max={30}
+          defaultValue={refetchInterval / 1000}
+          onChange={(value) => setRefetchInterval(value * 1000)}
+          onChangeComplete={() => queryClient.invalidateQueries('apiStatus')}
+          marks={{ 5: '5s', 30: '30s' }}
+        />
+      </div>
+
       <div style={listStyle}>
         {results}
       </div>

@@ -4,7 +4,7 @@ import axios from 'axios';
 const getApiUrl = (apiName) => `https://api.factoryfour.com/${apiName}/health/status`
 const apiNames = ['accounts', 'assets', 'customers', 'datapoints', 'devices', 'documents', 'forms', 'invites', 'media', 'messages', 'namespaces', 'orders', 'patients', 'relationships', 'rules', 'templates', 'users', 'workflows']
 
-export const useFetchAllApiStatuses = () => useQueries(
+export const useFetchAllApiStatuses = (refetchInterval) => useQueries(
   apiNames.map(apiName => ({
     queryKey: ['apiStatus', apiName],
     queryFn: () => axios.get(getApiUrl(apiName))
@@ -34,9 +34,9 @@ export const useFetchAllApiStatuses = () => useQueries(
         };
       }),
     keepPreviousData: true,
-    retry: 0,
+    retry: 1,
     retryDelay: 200,
+    refetchInterval,
     refetchOnWindowFocus: false,
-    // TODO: RefetchInterval
   }))
 );
