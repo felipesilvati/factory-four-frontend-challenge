@@ -15,6 +15,7 @@ const App = () => {
   const queryResults = useFetchAllApiStatuses(refetchInterval)
   const [initialLoad, setInitialLoad] = useState(true);
   const queryClient = useQueryClient();
+  const isFetching = queryClient.isFetching();
 
   // Only show loading spinner on initial load
   useEffect(() => {
@@ -33,7 +34,7 @@ const App = () => {
       <Title>Status Dashboard</Title>
 
       <div style={{ width: 400 }}>
-        <Text>Refresh Interval</Text>
+        <Text>Refresh Interval{isFetching ? ' (refreshing...)' : null}</Text>
         <Slider
           min={MIN_REFRESH_INTERVAL_SECONDS}
           max={MAX_REFRESH_INTERVAL_SECONDS}
