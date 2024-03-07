@@ -11,8 +11,10 @@ const StatusCard = ({ title, success, hostname, time }) => (
       </Flex>
     }
   >
-    <Statistic valueStyle={{ fontSize: 14 }} title="Hostname" value={hostname} />
-    <Statistic valueStyle={{ fontSize: 14 }} title="Time" value={time} />
+    <Flex vertical gap='middle'>
+      <Statistic valueStyle={{ fontSize: 14 }} title="Hostname" value={hostname} />
+      <Statistic valueStyle={{ fontSize: 14 }} title="Time" value={time} />
+    </Flex>
   </Card>
 );
 
