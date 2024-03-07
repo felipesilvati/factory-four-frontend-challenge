@@ -16,6 +16,7 @@ export const useFetchAllApiStatuses = () => {
           hostname: apiName,
           time: 0,
         })),
+      keepPreviousData: true,
       // TODO: RefetchInterval
     }))
   );
