@@ -50,7 +50,7 @@ const App = () => {
           defaultValue={refetchInterval / 1000}
           onChange={(value) => setRefetchInterval(value * 1000)}
           onChangeComplete={() => queryClient.invalidateQueries('apiStatus')}
-          marks={{ 5: '5s', 30: '30s', 60: '60s'}}
+          marks={{ 5: '5s', 15: '15s', 30: '30s', 45: '45s', 60: '60s' }}
         />
       </div>
 
