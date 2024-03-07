@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Typography, Spin, Slider } from 'antd';
 import StatusCard from './components/StatusCard';
 import { useFetchAllApiStatuses } from './helpers/queries';
-import { DEFAULT_RETRY_DELAY } from './helpers/constants';
+import { DEFAULT_RETRY_DELAY_MILLISECONDS, MAX_REFRESH_INTERVAL_SECONDS, MIN_REFRESH_INTERVAL, MIN_REFRESH_INTERVAL_SECONDS } from './helpers/constants';
 import { useQueryClient } from 'react-query';
 const { Title, Text } = Typography;
 
@@ -14,7 +14,7 @@ const listStyle = {
 };
 
 const App = () => {
-  const [refetchInterval, setRefetchInterval] = useState(DEFAULT_RETRY_DELAY);
+  const [refetchInterval, setRefetchInterval] = useState(DEFAULT_RETRY_DELAY_MILLISECONDS);
   const queryResults = useFetchAllApiStatuses(refetchInterval)
   const [initialLoad, setInitialLoad] = useState(true);
   const queryClient = useQueryClient();
@@ -43,14 +43,14 @@ const App = () => {
       <Title>Status Dashboard</Title>
 
       <div style={{ width: 400 }}>
-        <Text>Refetch Interval</Text>
+        <Text>Refresh Interval</Text>
         <Slider
-          min={5}
-          max={30}
+          min={MIN_REFRESH_INTERVAL_SECONDS}
+          max={MAX_REFRESH_INTERVAL_SECONDS}
           defaultValue={refetchInterval / 1000}
           onChange={(value) => setRefetchInterval(value * 1000)}
           onChangeComplete={() => queryClient.invalidateQueries('apiStatus')}
-          marks={{ 5: '5s', 30: '30s' }}
+          marks={{ 5: '5s', 30: '30s', 60: '60s'}}
         />
       </div>
 
