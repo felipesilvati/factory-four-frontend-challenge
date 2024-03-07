@@ -4,20 +4,36 @@ import { useFetchAllApiStatuses } from './helpers/queries';
 import { useIsFetching } from 'react-query';
 const { Title } = Typography;
 
+const listStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '16px',
+  justifyContent: 'left',
+};
+
 const App = () => {
   const queryResults = useFetchAllApiStatuses()
-  console.log('queryResults', queryResults)
+  const isFetching = useIsFetching()
 
-  if (useIsFetching()) {
+  if (isFetching) {
     return <Spin />
   }
 
+  const results = queryResults
+    .map(query => {
+      const { title, success, hostname, time, error } = query.data || {}
+
+      return <StatusCard key={title} title={title} success={success} hostname={hostname} time={time} error={error} />
+    })
+
   return (
-    <>
+    <div style={{ padding: 16 }}>
       <Title>Status Dashboard</Title>
 
-      <StatusCard title='Accounts' success={true} hostname='accounts-9368cf6fc17d' time='14:47:06' />
-    </>
+      <div style={listStyle}>
+        {results}
+      </div>
+    </div>
   );
 }
 
