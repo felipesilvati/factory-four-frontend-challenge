@@ -10,7 +10,7 @@
 
 ## Project Approach
 
-A provided PDF outlined a clear preference for a simple user interface. To achieve this, I opted for ([Ant Design](https://ant.design/)) as it facilitates a clean and efficient design. Additionally, I leveraged react-query to streamline API health checks and minimize boilerplate code for data fetching.
+A provided PDF outlined a clear preference for a simple user interface. To achieve this, I opted for [Ant Design](https://ant.design/) as it facilitates a clean and efficient design. Additionally, I leveraged react-query to streamline API health checks and minimize boilerplate code for data fetching.
 
 To promote maintainability, the application is structured into reusable and well-defined components. 
 
