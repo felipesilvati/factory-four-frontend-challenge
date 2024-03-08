@@ -10,17 +10,17 @@
 
 ## Project Approach
 
-A provided PDF outlined a clear preference for a simple user interface. To achieve this, I opted for [Ant Design](https://ant.design/) as it facilitates a clean and efficient design. Additionally, I leveraged react-query to streamline API health checks and minimize boilerplate code for data fetching.
+A provided PDF outlined a clear preference for a simple user interface. To achieve this, I opted for [Ant Design](https://ant.design/) as it facilitates a clean and efficient design. Additionally, I leveraged [react-query](https://tanstack.com/query/latest/docs/framework/react/overview) to streamline API health checks and minimize boilerplate code for data fetching.
 
-To promote maintainability, the application is structured into reusable and well-defined components. 
+To promote maintainability, the application is structured into reusable and well-defined components.
 
 **Future Considerations:**
 
 While this project serves as a quick demonstration of my skills, a more comprehensive solution would incorporate the following in a real-world scenario:
 
-* **Component Testing:** Implementing Storybook would enable isolated component testing, ensuring their reusability and consistency across the application.
-* **Unit Testing:** Unit tests with Jest would be established to verify the functionality of custom data fetching functions and individual components.
-* **End-to-End (E2E) Testing:** Introducing E2E tests using a tool like Cypress would validate user flows and happy paths within the application.
+* **Component Testing:** Implementing [Storybook](https://storybook.js.org/) would enable isolated component testing, ensuring their reusability and consistency across the application.
+* **Unit Testing:** Unit tests with [Jest](https://jestjs.io/) would be established to verify the functionality of custom data fetching functions and individual components.
+* **End-to-End (E2E) Testing:** Introducing E2E tests using a tool like [Cypress](https://www.cypress.io/) would validate user flows and happy paths within the application.
 
 These additional tests provide a safety net for future development, ensuring code stability and preventing regressions.
 
