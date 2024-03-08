@@ -1,6 +1,28 @@
-# Getting Started with Create React App
+## FactoryFour Frontend Dev Take-Home Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![App Screenshot](public/app_screenshot.png)
+
+**Clean & Efficient UI:** Built with Ant Design for a polished user experience.
+
+**Streamlined API Calls:** Leveraged react-query for efficient API health checks.
+
+**Modular Design:** Code is structured into well-defined, reusable components for maintainability.
+
+## Project Approach
+
+Given the prompt's emphasis on a simple UI, I heavily relied on Ant Design ([https://ant.design/](https://ant.design/)) to achieve a clean and efficient user interface. Additionally, I leveraged react-query to streamline API health checks, minimizing boilerplate code for fetching data. 
+
+To promote maintainability, the application is structured into reusable and well-defined components. 
+
+**Future Considerations:**
+
+While this project serves as a quick demonstration of my skills, a more comprehensive solution would incorporate the following in a real-world scenario:
+
+* **Component Testing:** Implementing Storybook would enable isolated component testing, ensuring their reusability and consistency across the application.
+* **Unit Testing:** Unit tests with Jest would be established to verify the functionality of custom data fetching functions and individual components.
+* **End-to-End (E2E) Testing:** Introducing E2E tests using a tool like Cypress would validate user flows and happy paths within the application.
+
+These additional tests provide a safety net for future development, ensuring code stability and preventing regressions.
 
 ## Available Scripts
 
@@ -8,26 +30,21 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the app in the development mode. Open http://localhost:3000 to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page will reload when you make changes. You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode. See the section about running tests: [https://facebook.github.io/create-react-app/docs/running-tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The build is minified and the filenames include the hashes. Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+See the section about deployment: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
 
@@ -39,32 +56,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Discussion
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I'm eager to walk you through my solution and discuss the challenges I encountered during development. This project provides a glimpse into my development approach and problem-solving skills.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Hopefully, the reviewers will find my approach effective and efficient.
