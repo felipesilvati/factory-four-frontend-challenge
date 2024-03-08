@@ -9,6 +9,8 @@ const listStyle = {
 };
 
 export const StatusCardList = ({ statusCards }) => {
+  if (!statusCards?.length) return null
+ 
   const results = statusCards
     .map(statusCard => {
       const { title, success, hostname, time, error } = statusCard.data || {}
